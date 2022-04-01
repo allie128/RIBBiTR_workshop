@@ -1,0 +1,104 @@
+﻿Sample_ID,GROUP,SamplingYear,SamplingDate,Sample_Type,Location,GENOASSIGN,Site_code,Site,Species_code,Genus,species,Lat,Lon
+SERDP_19_81,Pennsylvania,2019,3/29/19,swab,PA,unassign,1,Wood Lab,PSCR,Pseudacris,crucifer,41.569722,-80.4525
+SERDP_19_91,Pennsylvania,2019,4/8/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_144,Pennsylvania,2019,6/29/19,swab,PA,unassign,1,Wood Lab,LISY,Rana,sylvaticus,41.569722,-80.4525
+SERDP_19_74,Pennsylvania,2019,6/19/19,swab,PA,unassign,2,RV,LICL,Rana,clamitans,41.691705,-80.50082
+SERDP_18_41,Pennsylvania,2018,4/22/18,swab,PA,unassign,2,RV,PSCR,Pseudacris,crucifer,41.691705,-80.50082
+SERDP_19_83,Pennsylvania,2019,3/29/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_84,Pennsylvania,2019,3/29/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_155,Pennsylvania,2019,6/20/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_18_150,Pennsylvania,2018,9/30/18,swab,PA,unassign,5,Real Cow Pit [Sue and William Thompson],LICL,Rana,clamitans,41.593133,-80.356283
+SERDP_18_123,Pennsylvania,2018,7/16/18,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_159,Pennsylvania,2019,6/25/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_161,Pennsylvania,2019,6/20/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_145,Pennsylvania,2019,6/25/19,swab,PA,unassign,1,Wood Lab,LISY,Rana,sylvaticus,41.569722,-80.4525
+SERDP_19_146,Pennsylvania,2019,8/7/19,swab,PA,unassign,3,Housing/Hatchery,LIPI,Rana,pipiens,41.643053,-80.430097
+SERDP_19_158,Pennsylvania,2019,7/11/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_18_70,Pennsylvania,2018,5/12/18,swab,PA,unassign,2,RV,LICL,Rana,clamitans,41.691705,-80.50082
+SERDP_19_15,Pennsylvania,2019,4/13/19,swab,PA,unassign,4,Cow Pit,LICL,Rana,clamitans,41.672974,-80.513485
+SERDP_18_124,Pennsylvania,2018,7/16/18,swab,PA,unassign,1,Wood Lab,PSCR,Pseudacris,crucifer,41.569722,-80.4525
+SERDP_19_154,Pennsylvania,2019,8/8/19,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_18_63,Pennsylvania,2018,6/15/18,swab,PA,unassign,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_13,Pennsylvania,2019,6/25/19,swab,PA,unassign,3,Housing/Hatchery,LICL,Rana,clamitans,41.643053,-80.430097
+SERDP_18_36,Pennsylvania,2018,5/4/18,swab,PA,GPL1,3,Housing/Hatchery,LICA,Rana,catesbeiana,41.643053,-80.430097
+SERDP_18_125,Pennsylvania,2018,7/31/18,swab,PA,GPL1,5,Real Cow Pit [Sue and William Thompson],LICL,Rana,clamitans,41.593133,-80.356283
+SERDP_18_114,Pennsylvania,2018,7/12/18,swab,PA,GPL1,5,Real Cow Pit [Sue and William Thompson],DEFU,Desmognathus,fuscus,41.593133,-80.356283
+SERDP_19_58,Pennsylvania,2019,5/22/19,swab,PA,GPL1,2,RV,LICA,Rana,catesbeiana,41.691705,-80.50082
+SERDP_18_42,Pennsylvania,2018,5/5/18,swab,PA,GPL1,4,Cow Pit,LICA,Rana,catesbeiana,41.672974,-80.513485
+SERDP_18_79,Pennsylvania,2018,6/23/18,swab,PA,GPL1,4,Cow Pit,LICA,Rana,catesbeiana,41.672974,-80.513485
+SERDP_18_34,Pennsylvania,2018,4/14/18,swab,PA,GPL1,5,Real Cow Pit [Sue and William Thompson],DEFU,Desmognathus,fuscus,41.593133,-80.356283
+SERDP_45,Pennsylvania,2017,3/7/17,swab,PA,GPL1,4,Cow Pit,LICA,Rana,catesbeiana,41.672974,-80.513485
+SERDP_19_125,Pennsylvania,2019,10/4/19,swab,PA,GPL1,4,Cow Pit,LICA,Rana,catesbeiana,41.672974,-80.513485
+SERDP_19_56,Pennsylvania,2019,6/23/19,swab,PA,GPL1,4,Cow Pit,LICL,Rana,clamitans,41.672974,-80.513485
+SERDP_18_149,Pennsylvania,2018,9/30/18,swab,PA,GPL1,2,RV,LICA,Rana,catesbeiana,41.691705,-80.50082
+SERDP_19_130,Pennsylvania,2019,10/4/19,swab,PA,GPL1,4,Cow Pit,LICA,Rana,catesbeiana,41.672974,-80.513485
+SERDP_18_122,Pennsylvania,2018,7/12/18,swab,PA,GPL1,5,Real Cow Pit [Sue and William Thompson],PSRU,Pseudotriton,ruber,41.593133,-80.356283
+SERDP_18_135,Pennsylvania,2018,4/3/18,swab,PA,GPL1,4,Cow Pit,LICL,Rana,clamitans,41.672974,-80.513485
+SERDP_19_120,Pennsylvania,2019,10/13/19,swab,PA,GPL1,5,Real Cow Pit [Sue and William Thompson],DEFU,Desmognathus,fuscus,41.593133,-80.356283
+SERDP_18_68,Pennsylvania,2018,5/12/18,swab,PA,GPL1,2,RV,LICA,Rana,catesbeiana,41.691705,-80.50082
+SERDP_44,Pennsylvania,2017,3/7/17,swab,PA,GPL1,7,Beaver Pond,LICA,Rana,catesbeiana,41.665167,-80.51465
+SERDP_54,Pennsylvania,2017,5/10/17,swab,PA,GPL1,6,Tuttle,LICA,Rana,catesbeiana,41.638883,-80.495117
+SERDP_19_90,Pennsylvania,2019,4/6/19,swab,PA,GPL1,3,Housing/Hatchery,LICA,Rana,catesbeiana,41.643053,-80.430097
+SERDP_19_71,Pennsylvania,2019,5/22/19,swab,PA,GPL1,5,Real Cow Pit [Sue and William Thompson],DEFU,Desmognathus,fuscus,41.593133,-80.356283
+SERDP_47,Pennsylvania,2017,4/7/17,swab,PA,GPL1,6,Tuttle,LICA,Rana,catesbeiana,41.638883,-80.495117
+SERDP_19_51,Pennsylvania,2019,5/22/19,swab,PA,GPL1,2,RV,LICA,Rana,catesbeiana,41.691705,-80.50082
+SERDP_48,Pennsylvania,2017,5/9/17,swab,PA,GPL1,7,Beaver Pond,LICA,Rana,catesbeiana,41.665167,-80.51465
+SERDP_18_35,Pennsylvania,2018,5/4/18,swab,PA,GPL1,3,Housing/Hatchery,LICA,Rana,catesbeiana,41.643053,-80.430097
+SERDP_55,Pennsylvania,2017,5/11/17,swab,PA,GPL1,2,RV,LICA,Rana,catesbeiana,41.691705,-80.50082
+SERDP_19_47,Pennsylvania,2019,6/19/19,swab,PA,GPL1,2,RV,HYVE,Hyla,versicolor,41.691705,-80.50082
+SERDP_18_133,Pennsylvania,2018,4/3/18,swab,PA,GPL1,4,Cow Pit,LICA,Rana,catesbeiana,41.672974,-80.513485
+Bd_PAB01,Reference,,,isolate,,GPL1,,,,,,,
+Bd_MLA1,Reference,,,isolate,,GPL1,,,,,,,
+Bd_JEL359,Reference,,,isolate,,GPL1,,,,,,,
+Bd_JEL267,Reference,,,isolate,,GPL1,,,,,,,
+Bd_SRS812,Reference,,,isolate,,GPL1,,,,,,,
+Bd_CJB4,Reference,,,isolate,,GPL1,,,,,,,
+Bd_TST75,Reference,,,isolate,,GPL1,,,,,,,
+Bd_JEL238,Reference,,,isolate,,GPL1,,,,,,,
+Bd_MexMkt,Reference,,,isolate,,GPL1,,,,,,,
+SERDP_100,Pennsylvania,2017,8/14/17,swab,PA,GPL2,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_18_40,Pennsylvania,2018,4/22/18,swab,PA,GPL2,2,RV,NOVI,Notophthalmus,viridescens,41.691705,-80.50082
+SERDP_18_33,Pennsylvania,2018,5/4/18,swab,PA,GPL2,3,Housing/Hatchery,ANAM,Anaxyrus,americanus,41.643053,-80.430097
+SERDP_19_93,Pennsylvania,2019,4/14/19,swab,PA,GPL2,1,Wood Lab,PSCR,Pseudacris,crucifer,41.569722,-80.4525
+SERDP_19_86,Pennsylvania,2019,3/30/19,swab,PA,GPL2,8,David Pond,LIPI,Rana,pipiens,41.621208,-80.469131
+SERDP_18_44,Pennsylvania,2018,5/4/18,swab,PA,GPL2,3,Housing/Hatchery,PSCR,Pseudacris,crucifer,41.643053,-80.430097
+SERDP_18_72,Pennsylvania,2018,6/1/18,swab,PA,GPL2,3,Housing/Hatchery,HYVE,Hyla,versicolor,41.643053,-80.430097
+SERDP_18_139,Pennsylvania,2018,6/29/18,swab,PA,GPL2,3,Housing/Hatchery,HYVE,Hyla,versicolor,41.643053,-80.430097
+SERDP_18_38,Pennsylvania,2018,4/14/18,swab,PA,GPL2,4,Cow Pit,LIPI,Rana,pipiens,41.672974,-80.513485
+SERDP_18_136,Pennsylvania,2018,4/13/18,swab,PA,GPL2,3,Housing/Hatchery,LIPI,Rana,pipiens,41.643053,-80.430097
+SERDP_19_148,Pennsylvania,2019,4/5/19,swab,PA,GPL2,3,Housing/Hatchery,LIPI,Rana,pipiens,41.643053,-80.430097
+SERDP_19_163,Pennsylvania,2019,6/29/19,swab,PA,GPL2,3,Housing/Hatchery,ANAM,Anaxyrus,americanus,41.643053,-80.430097
+SERDP_18_32,Pennsylvania,2018,5/12/18,swab,PA,GPL2,2,RV,PSCR,Pseudacris,crucifer,41.691705,-80.50082
+SERDP_19_152,Pennsylvania,2019,6/24/19,swab,PA,GPL2,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_61,Pennsylvania,2019,4/13/19,swab,PA,GPL2,4,Cow Pit,LIPI,Rana,pipiens,41.672974,-80.513485
+SERDP_18_182,Pennsylvania,2018,8/18/18,swab,PA,GPL2,6,Tuttle,LICL,Rana,clamitans,41.638883,-80.495117
+SERDP_18_28,Pennsylvania,2018,4/27/18,swab,PA,GPL2,3,Housing/Hatchery,LIPI,Rana,pipiens,41.643053,-80.430097
+SERDP_18_134,Pennsylvania,2018,4/3/18,swab,PA,GPL2,4,Cow Pit,LIPI,Rana,pipiens,41.672974,-80.513485
+SERDP_19_28,Pennsylvania,2019,4/13/19,swab,PA,GPL2,4,Cow Pit,LIPI,Rana,pipiens,41.672974,-80.513485
+SERDP_19_160,Pennsylvania,2019,6/29/19,swab,PA,GPL2,1,Wood Lab,LICL,Rana,clamitans,41.569722,-80.4525
+SERDP_19_85,Pennsylvania,2019,3/30/19,swab,PA,GPL2,8,David Pond,LIPI,Rana,pipiens,41.621208,-80.469131
+SERDP_18_137,Pennsylvania,2018,4/13/18,swab,PA,GPL2,3,Housing/Hatchery,PSCR,Pseudacris,crucifer,41.643053,-80.430097
+SERDP_18_37,Pennsylvania,2018,5/4/18,swab,PA,GPL2,3,Housing/Hatchery,LIPI,Rana,pipiens,41.643053,-80.430097
+Bd_Campana,Reference,,,isolate,,GPL2,,,,,,,
+Bd_CJB5_2,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL427,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL433,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL627,Reference,,,isolate,,GPL2,,,,,,,
+Bd_CJB7,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL271,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL429,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL310,Reference,,,isolate,,GPL2,,,,,,,
+Bd_Lb_Aber,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL275,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JAM81,Reference,,,isolate,,GPL2,,,,,,,
+Bd_ev001,Reference,,,isolate,,GPL2,,,,,,,
+Bd_JEL410,Reference,,,isolate,,GPL2,,,,,,,
+Bd_RioMaria,Reference,,,isolate,,GPL2,,,,,,,
+Bd_NBRC106979,Reference,,,isolate,,GPL2,,,,,,,
+Bd_Pc_CN_JLV,Reference,,,isolate,,GPL2,,,,,,,
+Bd_RFM272,Reference,,,swab,,ASIA3,,,,,,,
+Bd_RFM380,Reference,,,swab,,ASIA3,,,,,,,
+Bd_LFT001_10,Reference,,,isolate,,Brazil_ASIA2,,,,,,,
+Bd_UM142,Reference,,,isolate,,Brazil_ASIA2,,,,,,,
+Bd_DCB609,Reference,,,swab,,CAPE,,,,,,,
+Bd_DMP1076,Reference,,,swab,,CAPE,,,,,,,
