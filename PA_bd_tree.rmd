@@ -16,42 +16,34 @@ First, some preparation
 > ./configure
 > make
 
-Ok now let's make sure we have the libraries we need and load them:
+Ok now let's make sure we have the libraries we need and go ahead and install them:
 
 ```{r setup, include=FALSE}
 
-if(!require(knitr)){
-    install.packages("knitr")
-    library(knitr)
-}
-if(!require(BiocManager)){
-    install.packages("BiocManager")
-    library(BiocManager)
-}
-if(!require(Biostrings)){
-    BiocManager::install("Biostrings")
-    library(Biostrings)
-}
-if(!require(tidyverse)){
-    install.packages("tidyverse")
-    library(tidyverse)
-}
-if(!require(muscle)){
-    BiocManager::install("muscle")
-    library(muscle)
-}
-if(!require(filesstrings)){
-    install.packages("filesstrings")
-    library(filesstrings)
-}
-if(!require(AstralPlane)){
-    devtools::install_github("chutter/AstralPlane")
-    library(AstralPlane)
-}
-if(!require(ape)){
-    install.packages("ape")
-    library(ape)
-}
+install.packages("knitr")
+install.packages("BiocManager")
+BiocManager::install("Biostrings")
+install.packages("tidyverse")
+BiocManager::install("muscle")
+install.packages("filesstrings")
+install.packages("devtools")
+devtools::install_github("chutter/AstralPlane")
+install.packages("ape")
+
+```
+
+Now let's load the libraries 
+
+```{r setup, include=FALSE}
+
+library(knitr)
+library(BiocManager)
+library(Biostrings)
+library(tidyverse)
+library(muscle)
+library(filesstrings)
+library(AstralPlane)
+library(ape)
 
 ```
 
