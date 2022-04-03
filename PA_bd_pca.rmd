@@ -6,46 +6,39 @@ editor_options:
 ---
 Before running this script I first did a few steps call SNPS from our data. I aligned the raw sequencing reads to a set of reference alleles using the program bwa-mem, then called variants using the haplotype-based caller Freebayes. Variants were then filtered using to only include variants with a minor allele frequency > 0.01, quality > 30, less than 10% missing data, and minimum depth of 5. There are plenty of tutorials out there to get from raw reads to filtered variants. But for the sake of time let's just start with out filtered variants in the form of a .vcf file.
 
-As always, let's start with loading the pacakges we will need.
+As always, let's start with installing the pacakges we will need.
 
 ```{r setup, include=FALSE}
-if(!require(knitr)){
-    install.packages("knitr")
-    library(knitr)
-}
-if(!require(tidyverse)){
-    install.packages("tidyverse")
-    library(tidyverse)
-}
-if(!require(vcfR)){
-    install.packages("vcfR")
-    library(vcfR)
-}
-if(!require(ggplot2)){
-    install.packages("ggplot2")
-    library(ggplot2)
-}
-if(!require(adegenet)){
-    install.packages("adegenet")
-    library(adegenet)
-}
-if(!require(poppr)){
-    install.packages("poppr")
-    library(poppr)
-}
-if(!require(RColorBrewer)){
-    install.packages("RColorBrewer")
-    library(RColorBrewer)
-}
-if(!require(vegan)){
-    install.packages("vegan")
-    library(vegan)
-}
-if(!require(Imap)){
-    install.packages("Imap")
-    library(Imap)
-}
+install.packages("knitr")
+install.packages("devtools")
+install.packages("tidyverse")
+install.packages("vcfR")
+install.packages("ggplot2")
+install.packages("adegenet")
+install.packages("poppr")
+install.packages("RColorBrewer")
+install.packages("vegan")
+install.packages("Imap")
+
 ```
+
+Now let's load the packages.
+
+```{r}
+
+library(knitr)
+library(devtools)
+library(tidyverse)
+library(vcfR)
+library(ggplot2)
+library(adegenet)
+library(poppr)
+library(RColorBrewer)
+library(vegan)
+library(Imap)
+
+```
+
 
 First we read in our variant call file (VCF) and match it to the metadata table.
 
