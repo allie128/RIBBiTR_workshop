@@ -11,7 +11,9 @@ of tutorials out there to get from raw reads to filtered variants. But
 for the sake of time let’s just start with out filtered variants in the
 form of a .vcf file.
 
-As always, let’s start with loading the pacakges we will need.
+As always, let’s start with installing the pacakges we will need.
+
+Now let’s load the packages.
 
 First we read in our variant call file (VCF) and match it to the
 metadata table.
@@ -116,9 +118,9 @@ grp
 
     ## $Kstat
     ##       K=1       K=2       K=3       K=4       K=5       K=6       K=7       K=8 
-    ## 149.72690 112.64025  94.55404  92.24078  90.79964  90.67777  90.90175  91.42809 
+    ## 149.72690 112.64025  94.55404  92.24078  90.79964  90.67777  92.20762  92.17851 
     ##       K=9      K=10 
-    ##  93.02891  93.87948 
+    ##  92.36918  93.32650 
     ## 
     ## $stat
     ##      K=3 
@@ -126,33 +128,33 @@ grp
     ## 
     ## $grp
     ##    SERDP_100 SERDP_18_114 SERDP_18_122 SERDP_18_123 SERDP_18_124 SERDP_18_125 
-    ##            3            1            1            2            2            1 
+    ##            1            2            2            3            3            2 
     ## SERDP_18_133 SERDP_18_134 SERDP_18_135 SERDP_18_136 SERDP_18_137 SERDP_18_139 
-    ##            1            3            1            3            3            3 
+    ##            2            1            2            1            1            1 
     ## SERDP_18_149 SERDP_18_150 SERDP_18_182  SERDP_18_28  SERDP_18_32  SERDP_18_33 
-    ##            1            2            3            3            2            3 
+    ##            2            3            1            1            3            1 
     ##  SERDP_18_34  SERDP_18_35  SERDP_18_36  SERDP_18_37  SERDP_18_38  SERDP_18_40 
-    ##            1            1            1            3            3            2 
+    ##            2            2            2            1            1            3 
     ##  SERDP_18_41  SERDP_18_42  SERDP_18_44  SERDP_18_63  SERDP_18_68  SERDP_18_70 
-    ##            2            1            3            2            1            2 
+    ##            3            2            1            3            2            3 
     ##  SERDP_18_72  SERDP_18_79 SERDP_19_120 SERDP_19_125  SERDP_19_13 SERDP_19_130 
-    ##            3            1            1            1            2            1 
+    ##            1            2            2            2            3            2 
     ## SERDP_19_144 SERDP_19_145 SERDP_19_146 SERDP_19_148  SERDP_19_15 SERDP_19_152 
-    ##            2            2            2            3            2            3 
+    ##            3            3            3            1            3            1 
     ## SERDP_19_154 SERDP_19_155 SERDP_19_158 SERDP_19_159 SERDP_19_160 SERDP_19_161 
-    ##            2            2            2            2            3            2 
+    ##            3            3            3            3            1            3 
     ## SERDP_19_163  SERDP_19_28  SERDP_19_47  SERDP_19_51  SERDP_19_56  SERDP_19_58 
-    ##            3            3            1            1            1            1 
+    ##            1            1            2            2            2            2 
     ##  SERDP_19_61  SERDP_19_71  SERDP_19_74  SERDP_19_81  SERDP_19_83  SERDP_19_84 
-    ##            3            1            2            2            2            2 
+    ##            1            2            3            3            3            3 
     ##  SERDP_19_85  SERDP_19_86  SERDP_19_90  SERDP_19_91  SERDP_19_93     SERDP_44 
-    ##            3            3            1            2            3            1 
+    ##            1            1            2            3            1            2 
     ##     SERDP_45     SERDP_47     SERDP_48     SERDP_54     SERDP_55 
-    ##            1            1            1            1            1 
+    ##            2            2            2            2            2 
     ## Levels: 1 2 3
     ## 
     ## $size
-    ## [1] 27 23 21
+    ## [1] 21 27 23
 
 ``` r
 #if we want to see the BIC chart we can see why it chose 3 because it is the "elbow" of the chart.
@@ -185,18 +187,18 @@ summary(dapc1)
     ## $prior.grp.size
     ## 
     ##  1  2  3 
-    ## 27 23 21 
+    ## 21 27 23 
     ## 
     ## $post.grp.size
     ## 
     ##  1  2  3 
-    ## 27 23 21
+    ## 21 27 23
 
 ``` r
 scatter(dapc1)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Wow those groups are really different\! BUT this is likely due to
 overfitting because we are using so many PCs for the calculation. So
@@ -207,19 +209,19 @@ lets find out how many PCs we should use
 temp <- optim.a.score(dapc1)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
 temp <- optim.a.score(dapc1)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
 
 ``` r
 temp <- optim.a.score(dapc1)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-6-3.png)<!-- -->
 
 ``` r
 #we ran it three times and got the same thing. It says our optimal number of PCs is 1 so let's use 2 to retain more information. 
@@ -230,7 +232,7 @@ dapc1 <- dapc(gl.Bd, grp$grp, n.pca=2, n.da=2)
 scatter(dapc1)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-6-4.png)<!-- -->
 
 Now we get a pretty reasonable spread. Perhaps some of these samples
 don’t have a high probability of being group into either 1 or 2. Let’s
@@ -241,7 +243,7 @@ check out the probabilities…
 assignplot(dapc1)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 #we can see that samples with yellow boxes have lower pobability of being assigned to either group.
@@ -270,7 +272,7 @@ title(ylab="Percent of variance\nexplained", line = 2)
 title(xlab="Eigenvalues", line = 1)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 Over 50% of the variation in the data is captured in PC1\! Now let’s see
 what the PCA looks like.
@@ -295,7 +297,7 @@ p
 
     ## Warning: Removed 1 row(s) containing missing values (geom_path).
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 Now we can compare the results we just calcualted with those calculates
 by me based on the larger dataset of Nevada and PA sample for our recent
@@ -319,7 +321,7 @@ p2
 
     ## Warning: Removed 1 row(s) containing missing values (geom_path).
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 We can see that the unassigned are the middle group while the GPL1 and
 GPL2 genotypes are on each side.
@@ -427,7 +429,7 @@ PA_signif   <- randtest(PA_amova, nrepet = 999)
 plot(PA_signif)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ``` r
 PA_signif
@@ -493,7 +495,7 @@ p + geom_dotplot(binaxis='y', stackdir='center', dotsize=0.5)
 
     ## Bin width defaults to 1/30 of the range of the data. Pick better value with `binwidth`.
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 **Calculate pairwise genetic distance and plot vs geographic distance**
 
@@ -581,7 +583,7 @@ plot(geo_dist_pa/1000, gen_dist_pa, xlab="Geographic Distance (km)", ylab="Genet
 abline(intercept, slope, col = "gray", lty = 3, lwd=2)
 ```
 
-![](PA_bd_pca_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](PA_bd_pca_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 Finally we can run a mantel test to see if geo and genetic distances are
 correlated in this system.
@@ -606,5 +608,5 @@ mantel(distance.mat.m.pa, pa.dist)
     ## Permutation: free
     ## Number of permutations: 999
 
-Now we can see that there is a very weak correaltion betwen Bd genetic
+Now we can see that there is a very weak correlation between Bd genetic
 distance and geographic distance (r = 0.1134).

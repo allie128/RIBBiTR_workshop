@@ -10,14 +10,18 @@ First, some preparation
     [Astral](https://github.com/smirarab/ASTRAL) in the workshop github
     folder. Navigate to the workshop folder and unzip the .zip file.
 
-2.  Download the program newick utils. Go to the workshop folder and
-    unzip it. Then navigate to the folder that has the newick utils in
-    terminal and run the following to make the binaries we will need to
-    run:
+**only for mac, step 2 won’t work for windows** 2. I’ve also included
+the program newick utils in the workshop github folder. Go to the
+workshop folder and unzip it. Then navigate to the folder that has the
+newick utils in terminal and run the following to make the binaries we
+will need to run:
 
 > ./configure make
 
-Ok now let’s make sure we have the libraries we need and load them:
+Ok now let’s make sure we have the libraries we need and go ahead and
+install them:
+
+Now let’s load the libraries and check to make sure they are all loaded.
 
 Now let’s read in the sequence data contained in the “seq\_data” files.
 Each fasta file represents an individual Bd sample. This folder includes
@@ -52,15 +56,15 @@ for (i in 1: length(files_PA)){
 hist(as.numeric(length_table_PA$length[-1]), breaks=50,main="PA", xlab="Number of sequences")
 ```
 
-![](PA_bd_tree_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](PA_bd_tree_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-We can see that each sample has a varible amount of missing data. At
+We can see that each sample has a variable amount of missing data. At
 this stage in the process we would choose what cutoff we would like to
 use for including samples.
 
 ``` r
-#get list of only samples with at least 100 sequences 
-files_PA_90 <- filter(length_table_PA, length>100)
+#get list of only samples with at least 90 sequences
+files_PA_90 <- filter(length_table_PA, length>90)
 
 filenames_PA_90 <- files_PA_90$file
 length(filenames_PA_90)
@@ -88,6 +92,7 @@ rownames(m_PA) <- files_PA_90$sample
 seq_matrix <- as_tibble(m_PA)
 
 #populate the empty matrix with the ambiguities sequences for PA
+#takes a minute to run
 for (i in 1:length(filenames_PA_90)){
   seq <- readDNAStringSet(filenames_PA_90[i])
   for (j in 1:length(seq)){
@@ -102,20 +107,20 @@ for (i in 1:length(filenames_PA_90)){
 #View(m_PA)
 ```
 
-Now we have a matrix *m\_PA* with samples as rows and primers as
-columns. First we can eliminate primers with no data. Let’s get the
+Now we have a matrix *m\_PA* with samples as rows and amplicons as
+columns. First we can eliminate amplicons with no data. Let’s get the
 average length of each sequence to determine which has no data. We can
 also find the min max and mean sequence length to identify potential bad
 sequences.
 
-Now let’s explore the problem amps/loci. These are ones missing too much
-data.
+Now let’s explore the problem amplicons. These are ones missing too much
+data that we should trim out.
 
 ``` r
-#identify amps with more than 1/2 missing data - only considering the samples of interest and not the reference samples (hence the +13)
+#identify amplicons with more than 1/2 missing data - only considering the samples of interest and not the reference samples (hence the +13)
 badamps_PA <- which(as.numeric(n_bases_PA[,7]) > (.5*(length(filenames_PA_90)+13)))
 
-#now trim out these amos fro the matrix
+#now trim out these amos from the matrix
 m_trim_PA <- m_PA[,-badamps_PA]
 
 #check how many we are left with
@@ -124,23 +129,63 @@ dim(m_trim_PA)
 
     ## [1]  82 176
 
+Now that we have a trimmed dataset let’s just double check we don’t have
+any errors in our sequence data. One way to do this is to check the
+difference in length between the min and max amplicon.
+
+``` r
+#create an empty object to count bases in the new trimmed matrix
+n_bases_PA_trim <- matrix(NA, nrow=ncol(m_trim_PA), ncol=7)
+
+#characterize each locus
+for (i in 1:ncol(m_trim_PA)){
+  n_bases_PA_trim[i,2] <- mean(nchar(m_trim_PA[,i]),na.rm=T)
+  n_bases_PA_trim[i,3] <- min(nchar(m_trim_PA[,i]),na.rm=T)
+  n_bases_PA_trim[i,4] <- max(nchar(m_trim_PA[,i]),na.rm=T)
+  n_bases_PA_trim[i,5] <- median(nchar(m_trim_PA[,i]),na.rm=T)
+  n_bases_PA_trim[i,6] <- max(nchar(m_trim_PA[,i]),na.rm=T) - min(nchar(m_trim_PA[,i]),na.rm=T)
+  n_bases_PA_trim[i,7] <- sum(is.na(m_trim_PA[,i]))
+}
+
+#rename columns and add amplicon labels
+n_bases_PA_trim[,1] <- colnames(m_trim_PA)
+colnames(n_bases_PA_trim) <- c("amp","mean","min","max","median","diff","sum_missing")
+
+n_bases_t <- as_tibble(n_bases_PA_trim)
+plot(n_bases_t$diff, ylab="seq length difference", xlab="amplicon")
+```
+
+![](PA_bd_tree_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+``` r
+#get the amplicon name for those that have really big differences between min and max amplicon length so we can double check there aren't bad sequences there
+n_bases_t[which(as.numeric(n_bases_t$diff) > 15),1]
+```
+
+    ## # A tibble: 3 x 1
+    ##   amp  
+    ##   <chr>
+    ## 1 41   
+    ## 2 225  
+    ## 3 243
+
 For each sample with data, aligns all loci separately. This is done only
 for the gene tree to species tree approach.
 
 Now we want to make a tree for each locus. This allows us to collapse
 all the information contained in one locus into the relative
-relationships between the samples. These trees will then be used to
-create another tree using the program ASTRAL-III. To do this I typically
-use the program geneious (as I will demonstrate) to run the command line
-program raxml to make a maximum liklihood tree with bootstrap support.
-Raxml can also be run locally after installing it. This installation can
-be a bit tricky and making the trees can be time consuming so I’ll show
-you how I do it then provide the trees. Really you can use any program
-that makes trees with bootstrap support.
+relationships between the samples. This is called the “gene tree to
+species tree” method. These trees will then be used to create another
+tree using the program ASTRAL-III. To do this I typically use the
+program Geneious (as I will demonstrate) to run the command line program
+raxml to make a maximum liklihood tree with bootstrap support. Raxml can
+also be run locally after installing it. This installation can be a bit
+tricky and making the trees can be time consuming so I’ll show you how I
+do it then provide the trees. Really you can use any program that makes
+trees with bootstrap support.
 
-Now for this project I loaded the alignments for each locus into the
-program geneious. From there I ran raxml for each locus using the
-following command:
+Here is the command line version of the raxml command that I ran in
+Geneious:
 
 > raxmlHPC-SSE3-MAC -s input.phy -n output -m GTRCAT -f a -x 1 -N 100 -p
 > 1
@@ -148,9 +193,13 @@ following command:
 You can also run raxml [online](https://raxml-ng.vital-it.ch/#/). Lots
 of options\!
 
-Next I concatenated all newick trees into one file to be input into
-Astral. In the directory with all the trees (and only the trees) with
-nodes collapsed I ran the following:
+For the purposes of this workshop I’ve made all the trees for us and
+they are in the folder *PA\_locus\_trees*
+
+Next we need to concatenate all trees into one file to be input into
+Astral. You can do this with a simple command on the command line. In
+the directory with all the trees (and only the trees) with nodes
+collapsed I ran the following:
 
 for mac: \> cat \* \> combined\_trees.newick
 
@@ -164,17 +213,35 @@ system("cat PA_locus_trees/* > PA_trees_combined.newick")
 
 Then we can use the newick utils tools to collapse all nodes with \<10
 bootstrap support. Make sure you have extracted the newick utils zipped
-file and run the compile and make commands (see above).
+file and run the compile and make commands (see above). Unfortunately
+this program does not work on windows so for those with windows we will
+use a file I have already collapsed for us.
+
+**run for mac only**
 
 ``` r
 system("./newick-utils-1.6/src/nw_ed PA_trees_combined.newick 'i & b<=10' o > PA_trees_collapse10.newick")
 ```
 
+**run for PC only**
+
+``` r
+system("copy \intermediate_files_jic\PA_trees_collapse10.newick PA_trees_collapse10.newick")
+```
+
 Then run astral on your set of collapsed trees. Double check that you
 have extracted the zipped Astral file and that the path is correct.
 
+**run for mac only**
+
 ``` r
 system("java -jar ./Astral/astral.5.7.5.jar -t 2 -i PA_trees_collapse10.newick -o PA_astral2.tre")
+```
+
+**run for PC only**
+
+``` r
+system("java -jar .\Astral\astral.5.7.5.jar -t 2 -i PA_trees_collapse10.newick -o PA_astral2.tre")
 ```
 
 Now we have a TREE\!\! Let’s look at it\! Here we can use a handy
@@ -208,11 +275,32 @@ collapse some of the low support nodes and then re-display our tree with
 support values. Here we will run Astral one more time to use a different
 notation (-t 3) use newick utils again to collapse low support nodes.
 
+**run on mac only**
+
 ``` r
 system("java -jar ./Astral/astral.5.7.5.jar -t 3 -i PA_trees_collapse10.newick -o PA_astral3.tre")
+```
 
+**run on PC only**
+
+``` r
+system("java -jar .\Astral\astral.5.7.5.jar -t 3 -i PA_trees_collapse10.newick -o PA_astral3.tre")
+```
+
+Now let’s collapse nodes with low support
+
+**run on mac only**
+
+``` r
 #collapse nodes with <0.5 posterior support
 system("./newick-utils-1.6/src/nw_ed PA_astral3.tre 'i & b<=0.5' o > PA_astral_collapse5.tre")
+```
+
+**run on PC only**
+
+``` r
+#copy file with collapsed nodes into working directory
+system("copy \intermediate_files_jic\PA_astral_collapse5.tre PA_astral_collapse5.tre")
 ```
 
 Read in the new astral tree and plot it.
@@ -227,7 +315,7 @@ plot(astral_collapse, show.node.label=T)
     ## Warning in plot.phylo(astral_collapse, show.node.label = T): 43 branch length(s)
     ## NA(s): branch lengths ignored in the plot
 
-![](PA_bd_tree_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](PA_bd_tree_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 Now it is probably helpful to read in a metadata file that has more
 information about each sample so we can be more specific with our
@@ -257,4 +345,4 @@ plot(astral_collapse_species, show.node.label=T, tip.color=as.numeric(as.factor(
     ## = as.numeric(as.factor(sample_info$GENOASSIGN)), : 43 branch length(s) NA(s):
     ## branch lengths ignored in the plot
 
-![](PA_bd_tree_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](PA_bd_tree_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->

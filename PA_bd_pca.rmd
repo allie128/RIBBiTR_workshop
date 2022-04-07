@@ -8,10 +8,11 @@ Before running this script I first did a few steps call SNPS from our data. I al
 
 As always, let's start with installing the pacakges we will need.
 
-```{r setup, include=FALSE}
-install.packages("knitr")
-install.packages("devtools")
-install.packages("tidyverse")
+```{r setup, include=FALSE, eval=FALSE}
+#pacakges already installed in the last tutorial
+#install.packages("knitr")
+#install.packages("devtools")
+#install.packages("tidyverse")
 install.packages("vcfR")
 install.packages("ggplot2")
 install.packages("adegenet")
@@ -24,7 +25,7 @@ install.packages("Imap")
 
 Now let's load the packages.
 
-```{r}
+```{r, include=FALSE}
 
 library(knitr)
 library(devtools)
@@ -37,8 +38,19 @@ library(RColorBrewer)
 library(vegan)
 library(Imap)
 
-```
+#check to see if loaded
+"knitr" %in% library()$results[,1]
+"devtools" %in% library()$results[,1]
+"tidyverse" %in% library()$results[,1]
+"vcfR" %in% library()$results[,1]
+"ggplot2" %in% library()$results[,1]
+"adegenet" %in% library()$results[,1]
+"poppr" %in% library()$results[,1]
+"poppr" %in% library()$results[,1]
+"RColorBrewer" %in% library()$results[,1]
+"Imap" %in% library()$results[,1]
 
+```
 
 First we read in our variant call file (VCF) and match it to the metadata table.
 
@@ -334,6 +346,6 @@ mantel(distance.mat.m.pa, pa.dist)
 
 ```
 
-Now we can see that there is a very weak correaltion betwen Bd genetic distance and geographic distance (r = 0.1134). 
+Now we can see that there is a very weak correlation between Bd genetic distance and geographic distance (r = 0.1134). 
 
 
