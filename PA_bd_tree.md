@@ -207,9 +207,15 @@ for windows: \> copy /b \*.newick combined\_trees.newick
 
 Here is code that will run this command right from R.
 
+**run for mac only**
+
 ``` r
 system("cat PA_locus_trees/* > PA_trees_combined.newick")
 ```
+
+**the file *PA\_combined\_trees.newick* is also in the folder
+“intermediate\_files\_jic” so you can just copy paste this into your
+working directory if you can’t get this concatenate command to work**
 
 Then we can use the newick utils tools to collapse all nodes with \<10
 bootstrap support. Make sure you have extracted the newick utils zipped
@@ -223,11 +229,8 @@ use a file I have already collapsed for us.
 system("./newick-utils-1.6/src/nw_ed PA_trees_combined.newick 'i & b<=10' o > PA_trees_collapse10.newick")
 ```
 
-**run for PC only**
-
-``` r
-system("copy \intermediate_files_jic\PA_trees_collapse10.newick PA_trees_collapse10.newick")
-```
+**on PC copy and paste the *PA\_trees\_collapse10.newick* from the
+folder “intermediate\_files\_jic” to the working directory**
 
 Then run astral on your set of collapsed trees. Double check that you
 have extracted the zipped Astral file and that the path is correct.
@@ -238,7 +241,7 @@ have extracted the zipped Astral file and that the path is correct.
 system("java -jar ./Astral/astral.5.7.5.jar -t 2 -i PA_trees_collapse10.newick -o PA_astral2.tre")
 ```
 
-**run for PC only**
+**run for PC only** **not tested might not work**
 
 ``` r
 system("java -jar .\Astral\astral.5.7.5.jar -t 2 -i PA_trees_collapse10.newick -o PA_astral2.tre")
@@ -281,7 +284,7 @@ notation (-t 3) use newick utils again to collapse low support nodes.
 system("java -jar ./Astral/astral.5.7.5.jar -t 3 -i PA_trees_collapse10.newick -o PA_astral3.tre")
 ```
 
-**run on PC only**
+**run on PC only** **not tested, might not work**
 
 ``` r
 system("java -jar .\Astral\astral.5.7.5.jar -t 3 -i PA_trees_collapse10.newick -o PA_astral3.tre")
@@ -296,12 +299,8 @@ Now let’s collapse nodes with low support
 system("./newick-utils-1.6/src/nw_ed PA_astral3.tre 'i & b<=0.5' o > PA_astral_collapse5.tre")
 ```
 
-**run on PC only**
-
-``` r
-#copy file with collapsed nodes into working directory
-system("copy \intermediate_files_jic\PA_astral_collapse5.tre PA_astral_collapse5.tre")
-```
+**on PC copy and paste the *PA\_astral\_collapse5.tre* from the folder
+“intermediate\_files\_jic” to the working directory**
 
 Read in the new astral tree and plot it.
 
@@ -315,7 +314,7 @@ plot(astral_collapse, show.node.label=T)
     ## Warning in plot.phylo(astral_collapse, show.node.label = T): 43 branch length(s)
     ## NA(s): branch lengths ignored in the plot
 
-![](PA_bd_tree_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](PA_bd_tree_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 Now it is probably helpful to read in a metadata file that has more
 information about each sample so we can be more specific with our
@@ -345,4 +344,4 @@ plot(astral_collapse_species, show.node.label=T, tip.color=as.numeric(as.factor(
     ## = as.numeric(as.factor(sample_info$GENOASSIGN)), : 43 branch length(s) NA(s):
     ## branch lengths ignored in the plot
 
-![](PA_bd_tree_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](PA_bd_tree_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
